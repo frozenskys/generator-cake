@@ -22,6 +22,7 @@ module.exports = common.extend({
       this.log('Generating bootstrapper scripts');
       this.copyFile('build.ps1', 'build.ps1');
       this.copyFile('build.sh', 'build.sh');
+      this.copyFile('build.cmd', 'build.cmd');
     }
   }
 });
