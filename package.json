@@ -1,8 +1,8 @@
 {
   "name": "generator-cake",
-  "version": "0.2.2",
+  "version": "0.3.0-Pre",
   "description": "Yeoman generator for Cake build scripts",
-  "homepage": "https://github.com/agc93/generator-cake/",
+  "homepage": "https://github.com/frozenskys/generator-cake/",
   "author": {
     "name": "Alistair Chapman",
     "email": "alistair@agchapman.com",
@@ -50,7 +50,7 @@
       "indent": "warn"
     }
   },
-  "repository": "agc93/generator-cake",
+  "repository": "frozenskys/generator-cake",
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"

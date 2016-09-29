@@ -36,7 +36,7 @@ module.exports = yeoman.Base.extend({
   greet(message) {
     var msg = message || 'Cake';
     this.log(yosay(
-      'Welcome to the ' + chalk.yellow.underline.bold(msg) + ' generator!'
+      'Welcome to the Bennetts ' + chalk.yellow.underline.bold(msg) + ' generator!'
     ));
   }
 });

@@ -1,5 +1,6 @@
 'use strict';
 var myBase = require('./base.js');
+var mkdirp = require('mkdirp');
 
 module.exports = myBase.extend({
   prompting: function() {
@@ -7,6 +8,11 @@ module.exports = myBase.extend({
     this.greet();
 
     var prompts = [{
+      type: 'confirm',
+      name: 'createFolders',
+      message: 'Would you like to create the default folders?',
+      default: true
+    }, {
       type: 'confirm',
       name: 'installBootstrapper',
       message: 'Would you like to also install the bootstrappers?',
@@ -44,6 +50,10 @@ module.exports = myBase.extend({
       this.templatePath('build.cake'),
       this.destinationPath(this.props.fileName)
     );
+    if (this.props.createFolders) {
+      mkdirp.sync('./src');
+      mkdirp.sync('./binaries');
+    }
     if (this.props.installBootstrapper) {
       this.composeWith('cake:bootstrapper', {
         options: {
