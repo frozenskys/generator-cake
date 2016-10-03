@@ -52,7 +52,7 @@ module.exports = myBase.extend({
     );
     if (this.props.createFolders) {
       mkdirp.sync('./src');
-      mkdirp.sync('./binaries');
+      mkdirp.sync('./lib');
     }
     if (this.props.installBootstrapper) {
       this.composeWith('cake:bootstrapper', {
