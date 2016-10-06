@@ -1,27 +1,21 @@
 'use strict';
 var myBase = require('./base.js');
-var mkdirp = require('mkdirp');
 
 module.exports = myBase.extend({
   prompting: function() {
-    // Have Yeoman greet the user.
-    this.greet();
-
+    
     var prompts = [{
-      type: 'confirm',
-      name: 'createFolders',
-      message: 'Would you like to create the default folders?',
-      default: true
-    }, {
       type: 'confirm',
       name: 'installBootstrapper',
       message: 'Would you like to also install the bootstrappers?',
-      default: true
+      default: this.options.installBootstrapper || true,
+      when: this.options.installBootstrapper == null
     }, {
       type: 'confirm',
       name: 'installConfigFile',
       message: 'Would you like to install a config file?',
-      default: false
+      default: this.options.installConfigFile || false,
+      when: this.options.installConfigFile == null
     }, {
       type: 'confirm',
       name: 'downloadFromRemote',
@@ -34,7 +28,8 @@ module.exports = myBase.extend({
       type: 'input',
       name: 'fileName',
       message: 'Enter a file name for your new build script',
-      default: 'build.cake',
+      default: this.options.fileName || 'build.cake',
+      when: this.options.fileName == null,
       store: true
     }];
 
@@ -50,10 +45,6 @@ module.exports = myBase.extend({
       this.templatePath('build.cake'),
       this.destinationPath(this.props.fileName)
     );
-    if (this.props.createFolders) {
-      mkdirp.sync('./src');
-      mkdirp.sync('./lib');
-    }
     if (this.props.installBootstrapper) {
       this.composeWith('cake:bootstrapper', {
         options: {
