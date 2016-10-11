@@ -1,9 +1,12 @@
+dist: trusty
 language: csharp
 mono: none
-dotnet: 1.0.0-preview2-003121
+dotnet: 1.0.0-preview2-003131
+env: DOTNETCORE=1
 node_js:
   - v6
   - v5
-script:
+install:
   - npm install
+script:
   - gulp
